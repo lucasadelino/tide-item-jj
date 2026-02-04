@@ -1,17 +1,16 @@
 function _tide_item_jj
     # Get Change ID and boolean commit properties
     # Adapted from https://github.com/lukerandall/dotfiles/blob/main/starship.toml#L72
-    # TODO use JJ label function for coloring?
     set wc_info (jj root >/dev/null && jj log --revisions @ --no-graph --ignore-working-copy --color always --limit 1 --template '
         separate(" ",
             change_id.shortest(4),
             bookmarks,
             concat(
-                if(conflict, "!"),
-                if(divergent, "≠"),
-                if(empty, raw_escape_sequence("\x1b[90m") ++ "ø"),
-                if(hidden, "◌"),
-                if(immutable, "◆"),
+                if(conflict, label("working_copy conflict", "!")),
+                if(divergent, label("working_copy divergent", "≠")),
+                if(empty, label("working_copy empty", "ø")),
+                if(hidden, label("elided", "◌")),
+                if(immutable, label("immutable", "◆")),
             ),
         raw_escape_sequence("\x1b[0m"),
         )'
