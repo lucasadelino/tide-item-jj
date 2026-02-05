@@ -29,7 +29,8 @@ fisher install lucasadelino/tide-item-jj
 ### Manually
 Download
 [these functions](https://github.com/lucasadelino/tide-item-jj/tree/main/functions)
-into your Fish `functions/` directory.
+into your Fish `functions/` directory. Optionally, set the diffstat color
+variables shown [here](#diffstat-colors) somewhere in your config.
 
 ## Usage
 This plugin is comprised of two functions.
@@ -52,5 +53,23 @@ set -U tide_left_prompt_items pwd jit newline character
 
 (It should go without saying that if you're using `jit`, you'll likely
 want to *not* use the default `git` item).
+
+### Diffstat colors
+Like Tide's `git` item, tide-item-jj uses several variables to color diffstats
+in the prompt. Unlike Tide's `git`, however, tide-item-jj cannot set these
+variables by default. If you want your diffstats to be colored, you'll need to
+set the following variables:
+
+  - tide_jj_color_upstream
+  - tide_jj_color_added
+  - tide_jj_color_modified
+  - tide_jj_color_removed
+  - tide_jj_color_renamed
+
+If you installed tide-item-jj via Fisher, this is done for you via
+`conf.d/tide_jj_colors`, which sets the above variables to the ANSI colors that
+JJ uses by default. If you installed tide-item-jj manually, you can either copy
+the conf.d file if you want those ANSI defaults, or `set -x` the variables
+somewhere in your config.
 
 [^1]: lol
