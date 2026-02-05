@@ -3,8 +3,6 @@ function _tide_item_jj
     # Adapted from https://github.com/lukerandall/dotfiles/blob/main/starship.toml#L72
     set wc_info (jj root >/dev/null && jj log --revisions @ --no-graph --ignore-working-copy --color always --limit 1 --template '
         separate(" ",
-            change_id.shortest(4),
-            bookmarks,
             concat(
                 if(conflict, label("working_copy conflict", "!")),
                 if(divergent, label("working_copy divergent", "≠")),
@@ -12,6 +10,8 @@ function _tide_item_jj
                 if(hidden, label("elided", "◌")),
                 if(immutable, label("immutable", "◆")),
             ),
+            change_id.shortest(4),
+            bookmarks,
         raw_escape_sequence("\x1b[0m"),
         )'
     )
@@ -27,6 +27,7 @@ function _tide_item_jj
     end
 
     # Get diffstats
+    # TODO add `copied` status
     set -l diffstats (jj log --no-graph --color never -r @ --limit 1 -T 'diff.summary()' 2>/dev/null)
     string match -qr '(0|(?<added>.*))\n(0|(?<modified>.*))\n(0|(?<removed>.*))\n(0|(?<renamed>.*))' \
         "$(string match -r ^A $diffstats | count
