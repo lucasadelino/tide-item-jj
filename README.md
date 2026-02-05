@@ -62,6 +62,7 @@ set the following variables:
 
   - tide_jj_color_upstream
   - tide_jj_color_added
+  - tide_jj_color_copied
   - tide_jj_color_modified
   - tide_jj_color_removed
   - tide_jj_color_renamed
