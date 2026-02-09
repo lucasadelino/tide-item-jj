@@ -8,7 +8,7 @@ function _tide_item_jj
                 if(divergent, label("working_copy divergent", "≠")),
                 if(empty, label("working_copy empty", "ø")),
                 if(hidden, label("elided", "◌")),
-                if(immutable, label("immutable", "◆")),
+                if(immutable, label("node immutable", "◆")),
             ),
             change_id.shortest(4),
             bookmarks,
