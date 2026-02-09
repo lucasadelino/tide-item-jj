@@ -40,18 +40,18 @@ retrieves and prints the JJ data. If you prefer, you can use this function
 directly.
 
 For convenience, however, you'll probably want to use the
-`_tide_item_jit`[^1] function, which checks whether you are currently in a Git
+`_tide_item_vcs` function, which checks whether you are currently in a Git
 or a JJ repo and then triggers the corresponding Tide function. This way you get
 a single Tide item that works for both version control systems. You can then add
 it
 [as you would any other Tide item](https://github.com/IlanCosman/tide/wiki/Configuration#items).
-For instance, to set a two-line `lean` prompt that includes the `jit` item:
+For instance, to set a two-line `lean` prompt that includes the `vcs` item:
 
 ```fish
-set -U tide_left_prompt_items pwd jit newline character
+set -U tide_left_prompt_items pwd vcs newline character
 ```
 
-(It should go without saying that if you're using `jit`, you'll likely
+(It should go without saying that if you're using `vcs`, you'll likely
 want to *not* use the default `git` item).
 
 ### Diffstat colors
@@ -72,5 +72,3 @@ If you installed tide-item-jj via Fisher, this is done for you via
 JJ uses by default. If you installed tide-item-jj manually, you can either copy
 the conf.d file if you want those ANSI defaults, or `set -x` the variables
 somewhere in your config.
-
-[^1]: lol

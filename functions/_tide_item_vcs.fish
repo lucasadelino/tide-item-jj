@@ -1,4 +1,4 @@
-function _tide_item_jit
+function _tide_item_vcs
     # Are we in a JJ repo?
     if test $PWD != $HOME
         and jj root &>/dev/null
