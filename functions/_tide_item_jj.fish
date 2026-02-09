@@ -1,7 +1,6 @@
 function _tide_item_jj
     # Get Change ID and boolean commit properties
     # Adapted from https://github.com/lukerandall/dotfiles/blob/main/starship.toml#L72
-    # TODO use Fish variables for icons
     set wc_info (jj root >/dev/null && jj log --revisions @ --no-graph --ignore-working-copy --color always --limit 1 --template '
         separate(" ",
             concat(
@@ -28,8 +27,6 @@ function _tide_item_jj
     end
 
     # Get diffstats
-    # TODO add `copied` status
-    # TODO use Fish variables for icons
     set -l diffstats (jj log --no-graph --color never -r @ --limit 1 -T 'diff.summary()' 2>/dev/null)
     string match -qr '(0|(?<added>.*))\n(0|(?<copied>.*))\n(0|(?<modified>.*))\n(0|(?<removed>.*))\n(0|(?<renamed>.*))' \
         "$(string match -r ^A $diffstats | count
