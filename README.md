@@ -80,3 +80,8 @@ If you installed tide-item-jj via Fisher, this is done for you via
 JJ uses by default. If you installed tide-item-jj manually, you can either copy
 the conf.d file if you want those ANSI defaults, or `set -x` the variables
 somewhere in your config.
+
+## See also
+- [This section](https://github.com/jj-vcs/jj/wiki/Fish-shell#prompt) on the
+  Jujutsu repo wiki, for other prompts
+- [This plugin](https://github.com/lucasadelino/jjtrack) by yours truly, if you'd like to access some of this data from Neovim
