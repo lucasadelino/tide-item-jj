@@ -1,5 +1,13 @@
 # tide-item-jj
 
+<p align="center">
+  <img 
+    width="50%" 
+    alt="tide_jj_e" 
+    src="https://github.com/user-attachments/assets/9dd87c42-a5ec-4354-b119-40dfea8fe38c" 
+  />
+</p>
+
 A [Jujutsu](https://www.jj-vcs.dev/latest/) item for
 [Tide](https://github.com/IlanCosman/tide/), showing the following information
 about the current commit:
