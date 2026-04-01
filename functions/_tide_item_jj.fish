@@ -17,11 +17,25 @@ function _tide_item_jj
     )
 
     # Get number of commits ahead & behind
-    set ahead (jj log --quiet --color never --no-pager --no-graph --ignore-working-copy -r '~empty() & ~::trunk()' -T 'change_id.short(4) ++ " "' | wc -w)
+    set ahead (
+        jj log \
+            --quiet --color never --no-pager --no-graph --ignore-working-copy \
+            -r 'reachable(@, mutable())
+                & ~empty()
+                & ~::remote_bookmarks()
+            ' \
+            -T 'change_id.short(4) ++ " "' \
+        | wc -w
+    )
     if test $ahead -eq 0
         set -e ahead
     end
-    set behind (jj log --quiet --color never --no-pager --no-graph --ignore-working-copy -r '@..trunk()' -T 'change_id.short(4) ++ " "' | wc -w)
+
+    set behind (
+        jj log \
+            --quiet --color never --no-pager --no-graph --ignore-working-copy \
+            -r '@..reachable(@, mutable()) & ::remote_bookmarks()' \
+            -T 'change_id.short(4) ++ " "' | wc -w)
     if test $behind -eq 0
         set -e behind
     end
