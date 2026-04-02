@@ -17,6 +17,8 @@ function _tide_item_jj
     )
 
     # Get number of commits ahead & behind
+    # Ahead: all non-empty, mutable commits that are reachable from @ and are not
+    # already present in the remote bookmarks.
     set ahead (
         jj log \
             --quiet --color never --no-pager --no-graph --ignore-working-copy \
@@ -31,6 +33,8 @@ function _tide_item_jj
         set -e ahead
     end
 
+    # Behind: all mutable commits in that are reachable from @ and have remote,
+    # but NOT local, bookmarks
     set behind (
         jj log \
             --quiet --color never --no-pager --no-graph --ignore-working-copy \
