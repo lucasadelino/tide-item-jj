@@ -22,7 +22,7 @@ function _tide_item_jj
     set ahead (
         jj log \
             --quiet --color never --no-pager --no-graph --ignore-working-copy \
-            -r 'reachable(@, mutable())
+            -r '(@:: | ::@)
                 & ~empty()
                 & ~::remote_bookmarks()
             ' \
@@ -38,7 +38,7 @@ function _tide_item_jj
     set behind (
         jj log \
             --quiet --color never --no-pager --no-graph --ignore-working-copy \
-            -r '@..reachable(@, mutable()) & ::remote_bookmarks()' \
+            -r '@+::remote_bookmarks()' \
             -T 'change_id.short(4) ++ " "' | wc -w)
     if test $behind -eq 0
         set -e behind
