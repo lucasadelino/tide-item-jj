@@ -2,7 +2,7 @@ function __set_x_default
     set name $argv[1]
     set value $argv[2]
     if not set -q $name
-        set -x $name $value
+        set -gx $name $value
     end
 end
 
