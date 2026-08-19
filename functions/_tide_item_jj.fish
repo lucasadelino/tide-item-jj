@@ -27,7 +27,7 @@ function _tide_item_jj
                 & ~::remote_bookmarks()
             ' \
             -T 'change_id.short(4) ++ " "' \
-        | wc -w
+        | wc -w | string trim
     )
     if test $ahead -eq 0
         set -e ahead
@@ -39,7 +39,7 @@ function _tide_item_jj
         jj log \
             --quiet --color never --no-pager --no-graph --ignore-working-copy \
             -r '@+::remote_bookmarks()' \
-            -T 'change_id.short(4) ++ " "' | wc -w)
+            -T 'change_id.short(4) ++ " "' | wc -w | string trim)
     if test $behind -eq 0
         set -e behind
     end
