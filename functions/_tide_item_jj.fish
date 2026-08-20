@@ -18,7 +18,7 @@ function _tide_item_jj
 
     # JJ resets all terminal colors after some labels. Replace those resets with
     # the Git item's base colors so they do not erase Tide's background color.
-    set -l item_reset (set_color normal; set_color $tide_git_color_branch -b $tide_git_bg_color)
+    set -l item_reset (set_color normal; set_color $tide_git_color_branch -b $tide_jj_bg_color)
     set wc_info (string replace --all \e'[0m' $item_reset -- $wc_info)
 
     # Get number of commits ahead & behind
@@ -59,9 +59,7 @@ function _tide_item_jj
         string match -r ^R $diffstats | count
         string match -r '^\?\?' $diffstats | count)"
 
-    # Reuse Tide's Git palette so the VCS item has a defined foreground and
-    # background without requiring additional user configuration.
-    _tide_print_item git $_tide_location_color$tide_git_icon' ' (echo -ns $wc_info
+    _tide_print_item jj $_tide_location_color$tide_git_icon' ' (echo -ns $wc_info
         set_color $tide_jj_color_upstream; echo -ns ' ⇣'$behind ' ⇡'$ahead
         set_color $tide_jj_color_added; echo -ns ' +'$added
         set_color $tide_jj_color_copied; echo -ns ' &'$copied
