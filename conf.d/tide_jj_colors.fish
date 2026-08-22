@@ -12,3 +12,4 @@ __set_x_default tide_jj_color_copied green
 __set_x_default tide_jj_color_modified cyan
 __set_x_default tide_jj_color_removed red
 __set_x_default tide_jj_color_renamed cyan
+__set_x_default tide_jj_bg_color $tide_git_bg_color
