@@ -21,13 +21,15 @@ function _tide_item_jj
     set wc_info (string replace --all \e'[0m' $item_reset -- $wc_info)
 
     # Get number of commits ahead & behind
-    # Ahead: all non-empty, mutable commits that are reachable from @ and are not
-    # already present in the remote bookmarks.
+    # Ahead: all commits that are
+    #   - Reachable from @
+    #   - Not already present in the remote bookmarks
+    #   - Without changes AND without a description
     set ahead (
         jj log \
             --quiet --color never --no-pager --no-graph --ignore-working-copy \
             -r '(@:: | ::@)
-                & ~empty()
+                & ~ (empty() | description(""))
                 & ~::remote_bookmarks()
             ' \
             -T 'change_id.short(4) ++ " "' \
