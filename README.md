@@ -62,23 +62,28 @@ set -U tide_left_prompt_items pwd vcs newline character
 (It should go without saying that if you're using `vcs`, you'll likely
 want to *not* use the default `git` item).
 
-### Diffstat colors
+### Colors
 Like Tide's `git` item, tide-item-jj uses several variables to color diffstats
 in the prompt. Unlike Tide's `git`, however, tide-item-jj cannot set these
 variables by default. If you want your diffstats to be colored, you'll need to
 set the following variables:
 
-  - tide_jj_color_upstream
-  - tide_jj_color_added
-  - tide_jj_color_copied
-  - tide_jj_color_modified
-  - tide_jj_color_removed
-  - tide_jj_color_renamed
+  - `tide_jj_color_upstream`
+  - `tide_jj_color_added`
+  - `tide_jj_color_copied`
+  - `tide_jj_color_modified`
+  - `tide_jj_color_removed`
+  - `tide_jj_color_renamed`
 
-If you installed tide-item-jj via Fisher, this is done for you via
+
+If you use a
+[rainbow](https://github.com/IlanCosman/tide/blob/assets/images/header.png)
+style prompt, also set `tide_jj_bg_color`.
+
+If you installed tide-item-jj via Fisher, all this is done for you via
 `conf.d/tide_jj_colors`, which sets the above variables to the ANSI colors that
-JJ uses by default. If you installed tide-item-jj manually, you can either copy
-the conf.d file if you want those ANSI defaults, or `set -x` the variables
+JJ uses by default. If you installed tide-item-jj manually, either copy
+the conf.d file if you want those ANSI defaults or `set -gx` the variables
 somewhere in your config.
 
 ## See also
