@@ -12,7 +12,6 @@ function _tide_item_jj
             ),
             change_id.shortest(4),
             bookmarks,
-        raw_escape_sequence("\x1b[0m"),
         )'
     )
 
