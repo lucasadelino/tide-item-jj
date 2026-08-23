@@ -41,26 +41,19 @@ into your Fish `functions/` directory. Optionally, set the diffstat color
 variables shown [here](#diffstat-colors) somewhere in your config.
 
 ## Usage
-This plugin is comprised of two functions.
-
-The main one is `_tide_item_jj`, which
-retrieves and prints the JJ data. If you prefer, you can use this function
-directly.
+This plugin is comprised of two functions. The main one is `_tide_item_jj`, which
+retrieves and prints the JJ data.
 
 For convenience, however, you'll probably want to use the
-`_tide_item_vcs` function, which checks whether you are currently in a Git
-or a JJ repo and then triggers the corresponding Tide function. This way you get
-a single Tide item that works for both version control systems. You can then add
-it
+`_tide_item_vcs` function, which checks whether the cwd is in a Git or a JJ repo
+and triggers the corresponding Tide function. This way you get a single Tide item
+that works for both version control systems. You can add it
 [as you would any other Tide item](https://github.com/IlanCosman/tide/wiki/Configuration#items).
 For instance, to set a two-line `lean` prompt that includes the `vcs` item:
 
 ```fish
 set -U tide_left_prompt_items pwd vcs newline character
 ```
-
-(It should go without saying that if you're using `vcs`, you'll likely
-want to *not* use the default `git` item).
 
 ### Colors
 Like Tide's `git` item, tide-item-jj uses several variables to color diffstats
