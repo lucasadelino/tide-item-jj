@@ -4,15 +4,11 @@ function _tide_item_vcs
         set_color $tide_git_color_branch | read -gx _tide_location_color
     end
 
-    # Are we in a JJ repo?
     if test $PWD != $HOME
+        # Are we in a JJ repo?
         and jj root &>/dev/null
-        set in_jjdir true
-    else
-        set in_jjdir false
-    end
-
-    if test "$in_jjdir" = true
+        # Are we NOT in a git submodule?
+        and test -z "$(git rev-parse --show-superproject-working-tree)"
         _tide_item_jj
     else
         _tide_item_git
