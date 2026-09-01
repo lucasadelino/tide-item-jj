@@ -7,6 +7,8 @@ function _tide_item_vcs
     if test $PWD != $HOME
         # Are we in a JJ repo?
         and jj root &>/dev/null
+        # Are we NOT in a git submodule?
+        and test -z "$(git rev-parse --show-superproject-working-tree)"
         _tide_item_jj
     else
         _tide_item_git
