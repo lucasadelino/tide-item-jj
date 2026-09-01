@@ -4,8 +4,8 @@ function _tide_item_vcs
         set_color $tide_git_color_branch | read -gx _tide_location_color
     end
 
-    # Are we in a JJ repo?
     if test $PWD != $HOME
+        # Are we in a JJ repo?
         and jj root &>/dev/null
         _tide_item_jj
     else
