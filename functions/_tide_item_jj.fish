@@ -11,14 +11,30 @@ function _tide_item_jj
                 if(immutable, label("node immutable", "◆")),
             ),
             change_id.shortest(4),
-            bookmarks,
         )'
     )
+
+    # Get the closest bookmarks reachable from @ (may be several revisions back).
+    # An empty $wc_info means we are not in a JJ repo, so skip the lookup.
+    set -l closest_bookmarks
+    if set -q wc_info[1]
+        set closest_bookmarks (
+            jj log \
+                --quiet --color never --no-pager --no-graph --ignore-working-copy \
+                -r 'heads(::@ & bookmarks())' \
+                -T 'local_bookmarks.join(" ") ++ "\n"'
+        )
+    end
+
+    set -l bookmark_prompt
+    if set -q closest_bookmarks[1]
+        set bookmark_prompt "$(set_color $tide_git_color_branch -b $tide_jj_bg_color) ($(string join ' ' $closest_bookmarks))"
+    end
 
     # JJ resets all terminal colors after some labels. Replace those resets with
     # the Git item's base colors so they do not erase Tide's background color.
     set -l item_reset (set_color normal; set_color $tide_git_color_branch -b $tide_jj_bg_color)
-    set wc_info (string replace --all \e'[0m' $item_reset -- $wc_info)
+    set wc_info (string replace --all \e'[0m' "$item_reset" -- $wc_info)"$bookmark_prompt"
 
     # Get number of commits ahead & behind
     # Ahead: all commits that are

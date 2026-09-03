@@ -12,7 +12,7 @@ A [Jujutsu](https://www.jj-vcs.dev/latest/) item for
 [Tide](https://github.com/IlanCosman/tide/), showing the following information
 about the current commit:
   - The current change_id (with the unique prefix highlighted)
-  - The current bookmarks, if any
+  - The closest bookmarks reachable from the current change
   - The following boolean properties:
     - conflicted
     - divergent
